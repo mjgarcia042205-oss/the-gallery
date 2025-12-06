@@ -388,39 +388,3 @@
                 text-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             }
         }
-
-        .hero-title {
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
-                       subtlePulse 4s 2s infinite ease-in-out;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .floating-element {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 4rem 1rem;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .cta-button {
-                padding: 0.8rem 2rem;
-                font-size: 0.95rem;
-            }
-        }

@@ -56,6 +56,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
+    
     <!-- Background Audio Controls -->
     <div class="audio-controls">
       <button class="audio-btn" id="audioToggle">
@@ -2029,6 +2031,125 @@
         document.addEventListener("click", enableAudioOnInteraction);
         document.addEventListener("touchstart", enableAudioOnInteraction);
       });
+      // Loading State Management
+document.addEventListener('DOMContentLoaded', function() {
+  const loadingScreen = document.getElementById('loadingScreen');
+  const images = document.querySelectorAll('img');
+  const totalImages = images.length;
+  let loadedImages = 0;
+  
+  // Show loading screen initially
+  if (loadingScreen) {
+    loadingScreen.style.display = 'flex';
+    
+    // Update loading text
+    const loadingText = loadingScreen.querySelector('.loading-text');
+    if (loadingText) {
+      loadingText.textContent = 'Preparing gallery experience...';
+    }
+    
+    // Create progress bar if needed
+    const progressBar = document.createElement('div');
+    progressBar.className = 'loading-progress';
+    progressBar.innerHTML = '<div class="loading-progress-bar" id="progressBar"></div>';
+    loadingScreen.querySelector('.loading-content').appendChild(progressBar);
+  }
+  
+  // Track image loading
+  images.forEach(img => {
+    // Add loading class to images
+    img.classList.add('image-loading');
+    
+    if (img.complete) {
+      imageLoaded();
+    } else {
+      img.addEventListener('load', imageLoaded);
+      img.addEventListener('error', imageLoaded); // Also count errors
+      
+      // Fallback timeout
+      setTimeout(imageLoaded, 5000);
+    }
+  });
+  
+  function imageLoaded() {
+    loadedImages++;
+    
+    // Update progress bar
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+      const progress = (loadedImages / totalImages) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+    
+    // Update loading text
+    const loadingText = document.querySelector('.loading-text');
+    if (loadingText) {
+      loadingText.textContent = `Loading images: ${loadedImages}/${totalImages}`;
+    }
+    
+    // Remove loading class from individual image
+    if (this && this.classList) {
+      this.classList.remove('image-loading');
+    }
+    
+    // Check if all images are loaded
+    if (loadedImages >= totalImages) {
+      finishLoading();
+    }
+  }
+  
+  // Fallback: If no images or all loaded quickly
+  if (totalImages === 0) {
+    finishLoading();
+  } else {
+    // Timeout fallback (10 seconds max)
+    setTimeout(finishLoading, 10000);
+  }
+  
+  function finishLoading() {
+    // Update text
+    const loadingText = document.querySelector('.loading-text');
+    if (loadingText) {
+      loadingText.textContent = 'Entering The Gallery...';
+    }
+    
+    // Add fade-out class
+    if (loadingScreen) {
+      loadingScreen.classList.add('fade-out');
+      
+      // Remove from DOM after animation
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        
+        // Trigger content animations
+        document.body.classList.add('loaded');
+        
+        // Start audio if auto-play is enabled
+        const audio = document.getElementById('backgroundAudio');
+        if (audio && !audio.paused) {
+          audio.play().catch(e => console.log('Audio autoplay prevented'));
+        }
+      }, 800);
+    }
+  }
+  
+  // Simulate loading for testing (remove in production)
+  window.testLoading = function(delay = 2000) {
+    if (loadingScreen) {
+      loadingScreen.style.display = 'flex';
+      loadingScreen.classList.remove('fade-out');
+      setTimeout(finishLoading, delay);
+    }
+  };
+  
+  // Force show loading screen (for testing)
+  window.showLoading = function() {
+    if (loadingScreen) {
+      loadingScreen.style.display = 'flex';
+      loadingScreen.classList.remove('fade-out');
+    }
+  };
+});
     </script>
   </body>
 </html>
