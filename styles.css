@@ -37,12 +37,12 @@ body {
 .mobile-menu-toggle {
   display: none;
   position: fixed;
-  top: 35px;
-  left: 375px;
-  width: 40px;
-  height: 40px;
+  top: 25px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
   background-color: #443627;
-  border-radius: 8px;
+  border-radius: 3px;
   z-index: 1002;
   cursor: pointer;
   align-items: center;
@@ -198,7 +198,6 @@ body {
 .section {
   width: 100%;
   position: relative;
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,16 +229,16 @@ body {
 .hero-image {
   width: 1108px;
   max-width: 90%;
-  height: auto;
+  height: 600px;
   max-height: 948px;
   object-fit: cover;
+  object-position: center 10%;
   opacity: 0.8;
   margin-bottom: 40px;
   border-radius: 10px;
-  transform: scale(0.95);
+  transform: scale(0.60);
   opacity: 0;
-  animation: zoomIn 1s ease-out 0.5s forwards,
-    float 6s ease-in-out infinite 1.5s;
+  animation: zoomIn 1s ease-out 0.5s forwards, float 6s ease-in-out infinite 1.5s;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -293,7 +292,7 @@ body {
   font-weight: 700;
   text-align: center;
   color: black;
-  margin-bottom: 60px;
+  margin-bottom: 0px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
@@ -309,7 +308,7 @@ body {
   position: relative;
   width: 1370px;
   max-width: 90%;
-  height: 1200px;
+  height: 1100px;
   margin: 0 auto;
 }
 
@@ -371,6 +370,22 @@ body {
   transform: translateY(0);
 }
 
+/* EXTRACTED INLINE STYLES FOR PAINTER CARDS */
+.painter-card.leonardo {
+  left: 171px;
+  top: 177px;
+}
+
+.painter-card.van-gogh {
+  left: 538px;
+  top: 176px;
+}
+
+.painter-card.monet {
+  left: 905px;
+  top: 177px;
+}
+
 /* Art sections container */
 .art-section-container {
   position: relative;
@@ -379,7 +394,7 @@ body {
   margin: 0 auto;
 }
 
-/* Art sections */
+/* Contemporary Art Section Styles */
 .contemporary-art,
 .modern-art,
 .renaissance-art,
@@ -402,13 +417,13 @@ body {
 }
 
 .photography {
-  min-height: 1200px;
+  min-height: 1300px;
 }
 
 .section-title {
-  font-size: 39px;
+  font-size: 80px;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   text-align: center;
   width: 100%;
@@ -436,7 +451,7 @@ body {
 }
 
 .artwork-img.visible {
-  opacity: 1; /* This should make them visible */
+  opacity: 1;
   transform: scale(1);
 }
 
@@ -456,18 +471,6 @@ body {
   z-index: 10;
 }
 
-.artwork-info {
-  position: absolute;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.artwork-info.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .artwork-title {
   font-size: 16px;
   font-weight: 700;
@@ -478,6 +481,567 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
+}
+
+/* EXTRACTED CONTEMPORARY ART STYLES */
+.artwork-group {
+  position: absolute;
+}
+
+/* Julie Mehretu */
+.artwork-group.julie {
+  left: 40px;
+  top: 227px;
+  width: 449px;
+}
+
+.artwork-group.julie .artwork-img {
+  width: 449px;
+  height: 449px;
+}
+
+.artwork-info.julie {
+  left: 35px;
+  top: 713px;
+  width: 421px;
+  height: 109px;
+}
+
+/* Joan Snyder */
+.artwork-group.joan {
+  left: 866px;
+  top: 180px;
+  width: 494px;
+}
+
+.artwork-group.joan .artwork-img {
+  width: 494px;
+  height: 370px;
+}
+
+.artwork-info.joan {
+  left: 893px;
+  top: 575px;
+  width: 181px;
+  height: 101px;
+}
+
+/* Julian Schnabel */
+.artwork-group.julian {
+  left: 516px;
+  top: 320px;
+  width: 324px;
+}
+
+.artwork-group.julian .artwork-img {
+  width: 324px;
+  height: 389px;
+}
+
+.artwork-info.julian {
+  left: 528px;
+  top: 729px;
+  width: 216px;
+  height: 99px;
+}
+
+/* Santiago Yahuarcani */
+.artwork-group.santiago {
+  left: 46px;
+  top: 865px;
+  width: 785px;
+}
+
+.artwork-group.santiago .artwork-img {
+  width: 785px;
+  height: 424px;
+}
+
+.artwork-info.santiago {
+  left: 46px;
+  top: 1308px;
+  width: 224px;
+  height: 88px;
+}
+
+/* Julian Lethbridge */
+.artwork-group.lethbridge {
+  left: 877px;
+  top: 713px;
+  width: 483px;
+}
+
+.artwork-group.lethbridge .artwork-img {
+  width: 483px;
+  height: 581px;
+}
+
+.artwork-info.lethbridge {
+  left: 877px;
+  top: 1317px;
+  width: 193px;
+  height: 109px;
+}
+
+/* Mark Grotjahn */
+.artwork-group.mark {
+  left: 794px;
+  top: 1552px;
+  width: 567px;
+}
+
+.artwork-group.mark .artwork-img {
+  width: 567px;
+  height: 403px;
+}
+
+.artwork-info.mark {
+  left: 40px;
+  top: 1980px;
+  width: 317px;
+  height: 88px;
+}
+
+/* Josh Smith */
+.artwork-group.josh {
+  left: 40px;
+  top: 1477px;
+  width: 349px;
+}
+
+.artwork-group.josh .artwork-img {
+  width: 349px;
+  height: 484px;
+}
+
+.artwork-info.josh {
+  left: 418px;
+  top: 1842px;
+  width: 223px;
+  height: 88px;
+}
+
+/* Michael Armitage */
+.artwork-group.michael {
+  left: 418px;
+  top: 1385px;
+  width: 358px;
+}
+
+.artwork-group.michael .artwork-img {
+  width: 358px;
+  height: 446px;
+}
+
+.artwork-info.michael {
+  left: 794px;
+  top: 1975px;
+  width: 292px;
+  height: 88px;
+}
+
+/* EXTRACTED MODERN ART STYLES */
+/* Richard Paul Lohse */
+.artwork-group.richard {
+  left: 939px;
+  top: 1517px;
+  width: 416px;
+}
+
+.artwork-group.richard .artwork-img {
+  width: 416px;
+  height: 414px;
+}
+
+.artwork-info.richard {
+  left: 939px;
+  top: 1945px;
+  width: 417px;
+  height: 87px;
+}
+
+/* Jan Mauller */
+.artwork-group.jan {
+  left: 34px;
+  top: 877px;
+  width: 742px;
+}
+
+.artwork-group.jan .artwork-img {
+  width: 742px;
+  height: 423px;
+}
+
+.artwork-info.jan {
+  left: 34px;
+  top: 1307px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Raphael Soyer */
+.artwork-group.raphael {
+  left: 34px;
+  top: 236px;
+  width: 298px;
+}
+
+.artwork-group.raphael .artwork-img {
+  width: 298px;
+  height: 375px;
+}
+
+.artwork-info.raphael {
+  left: 34px;
+  top: 630px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Jane Wilson */
+.artwork-group.jane {
+  left: 34px;
+  top: 1438px;
+  width: 540px;
+}
+
+.artwork-group.jane .artwork-img {
+  width: 540px;
+  height: 407px;
+}
+
+.artwork-info.jane {
+  left: 34px;
+  top: 1859px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Salvatore Scarpitta */
+.artwork-group.salvatore {
+  left: 610px;
+  top: 1608px;
+  width: 291px;
+}
+
+.artwork-group.salvatore .artwork-img {
+  width: 291px;
+  height: 377px;
+}
+
+.artwork-info.salvatore {
+  left: 610px;
+  top: 1994px;
+  width: 290px;
+  height: 87px;
+}
+
+/* Elmer Bischoff */
+.artwork-group.elmer {
+  left: 358px;
+  top: 113px;
+  width: 467px;
+}
+
+.artwork-group.elmer .artwork-img {
+  width: 467px;
+  height: 572px;
+}
+
+.artwork-info.elmer {
+  left: 358px;
+  top: 702px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Remedios Varo */
+.artwork-group.remedios {
+  left: 802px;
+  top: 989px;
+  width: 552px;
+}
+
+.artwork-group.remedios .artwork-img {
+  width: 552px;
+  height: 410px;
+}
+
+.artwork-info.remedios {
+  left: 802px;
+  top: 1410px;
+  width: 553px;
+  height: 87px;
+}
+
+/* Jean Dubuffet */
+.artwork-group.jean {
+  left: 850px;
+  top: 213px;
+  width: 505px;
+}
+
+.artwork-group.jean .artwork-img {
+  width: 505px;
+  height: 592px;
+}
+
+.artwork-info.jean {
+  left: 850px;
+  top: 826px;
+  width: 505px;
+  height: 87px;
+}
+
+/* EXTRACTED RENAISSANCE ART STYLES */
+/* Caravaggio - Medusa */
+.artwork-group.caravaggio-medusa {
+  left: 60px;
+  top: 1273px;
+  width: 434px;
+}
+
+.artwork-group.caravaggio-medusa .artwork-img {
+  width: 434px;
+  height: 531px;
+}
+
+.artwork-info.caravaggio-medusa {
+  left: 60px;
+  top: 1819px;
+  width: 269px;
+  height: 81px;
+}
+
+/* Titian */
+.artwork-group.titian {
+  left: 67px;
+  top: 248px;
+  width: 533px;
+}
+
+.artwork-group.titian .artwork-img {
+  width: 533px;
+  height: 401px;
+}
+
+.artwork-info.titian {
+  left: 64px;
+  top: 662px;
+  width: 287px;
+  height: 86px;
+}
+
+/* Leonardo da Vinci - Lady with Ermine */
+.artwork-group.leonardo-lady {
+  left: 1064px;
+  top: 775px;
+  width: 332px;
+}
+
+.artwork-group.leonardo-lady .artwork-img {
+  width: 332px;
+  height: 418px;
+}
+
+.artwork-info.leonardo-lady {
+  left: 1064px;
+  top: 1208px;
+  width: 322px;
+  height: 110px;
+}
+
+/* Caravaggio - Supper at Emmaus */
+.artwork-group.caravaggio-supper {
+  left: 657px;
+  top: 138px;
+  width: 777px;
+}
+
+.artwork-group.caravaggio-supper .artwork-img {
+  width: 777px;
+  height: 443px;
+}
+
+.artwork-info.caravaggio-supper {
+  left: 657px;
+  top: 589px;
+  width: 303px;
+  height: 91px;
+}
+
+/* Leonardo da Vinci - Ginevra de' Benci */
+.artwork-group.leonardo-ginevra {
+  left: 552px;
+  top: 1390px;
+  width: 475px;
+}
+
+.artwork-group.leonardo-ginevra .artwork-img {
+  width: 475px;
+  height: 351px;
+}
+
+.artwork-info.leonardo-ginevra {
+  left: 552px;
+  top: 1752px;
+  width: 475px;
+  height: 75px;
+}
+
+/* Pieter Bruegel the Elder */
+.artwork-group.pieter {
+  left: 1083px;
+  top: 1422px;
+  width: 294px;
+}
+
+.artwork-group.pieter .artwork-img {
+  width: 294px;
+  height: 380px;
+}
+
+.artwork-info.pieter {
+  left: 1083px;
+  top: 1812px;
+  width: 293px;
+  height: 88px;
+}
+
+/* Raphael */
+.artwork-group.raphael-renaissance {
+  left: 118px;
+  top: 759px;
+  width: 395px;
+}
+
+.artwork-group.raphael-renaissance .artwork-img {
+  width: 395px;
+  height: 393px;
+}
+
+.artwork-info.raphael-renaissance {
+  left: 118px;
+  top: 1166px;
+  width: 396px;
+  height: 83px;
+}
+
+/* Caravaggio - Cupid as Victor */
+.artwork-group.caravaggio-cupid {
+  left: 546px;
+  top: 700px;
+  width: 481px;
+}
+
+.artwork-group.caravaggio-cupid .artwork-img {
+  width: 481px;
+  height: 564px;
+}
+
+.artwork-info.caravaggio-cupid {
+  left: 546px;
+  top: 1284px;
+  width: 480px;
+  height: 87px;
+}
+
+/* EXTRACTED PHOTOGRAPHY STYLES */
+/* Lena Koval */
+.artwork-group.lena {
+  left: 31px;
+  top: 166px;
+  width: 305px;
+}
+
+.artwork-group.lena .artwork-img {
+  width: 305px;
+  height: 366px;
+  border-radius: 0.77px;
+}
+
+.artwork-info.lena {
+  left: 31px;
+  top: 537px;
+  width: 305px;
+  height: 57px;
+}
+
+/* Miles Grantt */
+.artwork-group.miles {
+  left: 362px;
+  top: 350px;
+  width: 618px;
+}
+
+.artwork-group.miles .artwork-img {
+  width: 618px;
+  height: 506px;
+  border-radius: 1.56px;
+}
+
+.artwork-info.miles {
+  left: 363px;
+  top: 868px;
+  width: 618px;
+  height: 54px;
+}
+
+/* Emilie Möri */
+.artwork-group.emilie {
+  left: 1011px;
+  top: 152px;
+  width: 287px;
+}
+
+.artwork-group.emilie .artwork-img {
+  width: 287px;
+  height: 287px;
+}
+
+.artwork-info.emilie {
+  left: 1011px;
+  top: 447px;
+  width: 287px;
+  height: 57px;
+}
+
+/* Igor Vitomirov */
+.artwork-group.igor {
+  left: 69px;
+  top: 622px;
+  width: 247px;
+}
+
+.artwork-group.igor .artwork-img {
+  width: 247px;
+  height: 329px;
+}
+
+.artwork-info.igor {
+  left: 69px;
+  top: 965px;
+  width: 247px;
+  height: 57px;
+}
+
+/* Kristin Hart */
+.artwork-group.kristin {
+  left: 1026px;
+  top: 551px;
+  width: 301px;
+}
+
+.artwork-group.kristin .artwork-img {
+  width: 301px;
+  height: 199px;
+}
+
+.artwork-info.kristin {
+  left: 1027px;
+  top: 760px;
+  width: 287px;
+  height: 57px;
 }
 
 /* Footer */
@@ -607,7 +1171,7 @@ body {
     width: 70px;
     overflow: visible;
     transform: translateX(-100%);
-    animation: slideInLeft 0.6s ease-out 0.2s forwards; /* Add forwards here too */
+    animation: slideInLeft 0.6s ease-out 0.2s forwards;
   }
 
   .sidebar.loaded {
@@ -683,213 +1247,6 @@ body {
 }
 
 /* Mobile Styles (max-width: 768px) */
-/* Mobile Styles (max-width: 768px) */
-/* Mobile Styles (max-width: 768px) */
-/* Tablet Styles (768px - 1024px) */
-/* Tablet Styles (768px - 1024px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .sidebar {
-    width: 70px;
-    overflow: visible;
-    transform: translateX(-100%);
-    animation: slideInLeft 0.6s ease-out 0.2s forwards;
-  }
-
-  .sidebar.loaded {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    margin-left: 70px;
-    width: calc(100% - 70px);
-  }
-
-  .nav-text {
-    display: none;
-  }
-
-  .nav-item {
-    justify-content: center;
-    padding: 12px 8px;
-  }
-
-  .nav-icon {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-
-  .sidebar-title {
-    font-size: 16px;
-    text-align: center;
-    line-height: 40px;
-    margin-bottom: 10px;
-  }
-
-  .hero-title {
-    font-size: 60px;
-  }
-
-  .painters-title {
-    font-size: 80px;
-  }
-
-  .hero-description {
-    width: 90%;
-  }
-
-  /* Tablet Carousel Styles */
-  .painters-container,
-  .art-section-container {
-    display: none; /* Hide original containers on tablet */
-  }
-
-  /* Show carousel containers */
-  .painters-carousel-container,
-  .art-carousel-container {
-    display: block !important;
-  }
-
-  /* Polaroid style for carousel */
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .carousel-slide {
-    display: none;
-    background: white;
-    padding: 20px 20px 60px 20px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    position: relative;
-    border: 1px solid #e0e0e0;
-  }
-
-  .carousel-slide.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-  }
-
-  .carousel-slide.polaroid {
-    padding-bottom: 80px; /* More space for caption */
-  }
-
-  .carousel-slide .artwork-img {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    height: 400px !important; /* 1:1 aspect ratio */
-    object-fit: cover;
-    border-radius: 4px;
-    margin: 0 0 20px 0 !important;
-    display: block;
-  }
-
-  .carousel-slide .artwork-info {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
-    display: block;
-    text-align: center;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 4px;
-    border-top: 1px solid #e0e0e0;
-  }
-
-  .carousel-slide .painter-card {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 0;
-    width: 100% !important;
-    display: block;
-  }
-
-  .carousel-slide .painter-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
-
-  .carousel-slide .painter-name,
-  .carousel-slide .painter-bio {
-    opacity: 1 !important;
-    transform: none !important;
-    text-align: center;
-  }
-
-  /* Carousel controls */
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-  }
-
-  .carousel-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #443627;
-    color: white;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-btn:hover {
-    background-color: #5a4a35;
-    transform: scale(1.1);
-  }
-
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ccc;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-dot.active {
-    background-color: #443627;
-    transform: scale(1.2);
-  }
-
-  .contemporary-art,
-  .modern-art,
-  .renaissance-art,
-  .photography {
-    min-height: auto;
-    padding: 40px 20px;
-  }
-}
-
-/* Mobile Styles (max-width: 768px) */
-/* Mobile Styles (max-width: 768px) */
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: flex;
@@ -903,7 +1260,7 @@ body {
   }
 
   .sidebar.active {
-    transform: translateX(0) !important; /* Add !important */
+    transform: translateX(0) !important;
   }
 
   .sidebar.loaded {
@@ -913,68 +1270,68 @@ body {
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 63px 15px 0 15px; /* Reduced side padding */
+    padding: 63px 15px 0 15px;
   }
 
   .hero-section {
-    padding: 10px 0 20px 0; /* Reduced padding */
-    margin-bottom: 30px; /* Reduced margin */
+    padding: 10px 0 20px 0;
+    margin-bottom: 30px;
   }
 
   .hero-title {
-    font-size: 32px; /* Slightly smaller */
-    margin-bottom: 15px; /* Reduced margin */
+    font-size: 32px;
+    margin-bottom: 15px;
     line-height: 1.1;
   }
 
   .painters-title,
   .section-title {
-    font-size: 32px; /* Consistent size */
-    margin-bottom: 25px; /* Reduced margin */
+    font-size: 32px;
+    margin-bottom: 25px;
     line-height: 1.2;
   }
 
   .section {
-    margin-bottom: 50px; /* Reduced margin between sections */
+    margin-bottom: 50px;
     width: 100%;
   }
 
   .section-divider {
     width: 95%;
-    margin: 30px 0; /* Reduced margin */
+    margin: 30px 0;
     height: 1px;
   }
 
   /* Mobile Carousel Styles */
   .painters-container,
   .art-section-container {
-    display: none; /* Hide original containers on mobile */
+    display: none;
   }
 
   /* Show carousel containers */
   .painters-carousel-container,
   .art-carousel-container {
     display: block !important;
-    margin-bottom: 30px; /* Consistent spacing */
+    margin-bottom: 30px;
   }
 
   /* Polaroid style for carousel */
   .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 320px; /* Slightly smaller */
-    margin: 0 auto 15px auto; /* Reduced bottom margin */
+    max-width: 320px;
+    margin: 0 auto 15px auto;
   }
 
   .carousel-slide {
     display: none;
     background: white;
-    padding: 12px 12px 45px 12px; /* Reduced padding */
+    padding: 12px 12px 45px 12px;
     border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     border: 1px solid #e0e0e0;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px;
   }
 
   .carousel-slide.active {
@@ -983,7 +1340,7 @@ body {
   }
 
   .carousel-slide.polaroid {
-    padding-bottom: 60px; /* Reduced space for caption */
+    padding-bottom: 60px;
   }
 
   .carousel-slide .artwork-img {
@@ -991,10 +1348,10 @@ body {
     top: auto !important;
     left: auto !important;
     width: 100% !important;
-    height: 280px !important; /* Slightly smaller 1:1 aspect ratio */
+    height: 280px !important;
     object-fit: cover;
     border-radius: 4px;
-    margin: 0 0 12px 0 !important; /* Reduced margin */
+    margin: 0 0 12px 0 !important;
     display: block;
   }
 
@@ -1007,11 +1364,11 @@ body {
     transform: none !important;
     display: block;
     text-align: center;
-    padding: 10px; /* Reduced padding */
+    padding: 10px;
     background: #f9f9f9;
     border-radius: 4px;
     border-top: 1px solid #e0e0e0;
-    font-size: 13px; /* Smaller font */
+    font-size: 13px;
     line-height: 1.3;
     margin: 0;
   }
@@ -1027,20 +1384,20 @@ body {
 
   .carousel-slide .painter-card img {
     width: 100%;
-    height: 280px; /* Slightly smaller */
+    height: 280px;
     object-fit: cover;
     border-radius: 4px;
-    margin-bottom: 12px; /* Reduced margin */
+    margin-bottom: 12px;
   }
 
   .carousel-slide .painter-name {
-    font-size: 16px; /* Smaller font */
-    margin-bottom: 6px; /* Reduced margin */
+    font-size: 16px;
+    margin-bottom: 6px;
     line-height: 1.2;
   }
 
   .carousel-slide .painter-bio {
-    font-size: 13px; /* Smaller font */
+    font-size: 13px;
     line-height: 1.3;
   }
 
@@ -1053,24 +1410,24 @@ body {
     padding: 0 5px;
   }
 
-  /* Carousel controls - more compact */
+  /* Carousel controls */
   .carousel-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Reduced gap */
-    margin-top: 15px; /* Reduced margin */
-    margin-bottom: 20px; /* Reduced margin */
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
   }
 
   .carousel-btn {
-    width: 36px; /* Smaller buttons */
+    width: 36px;
     height: 36px;
     border-radius: 50%;
     background-color: #443627;
     color: white;
     border: none;
-    font-size: 18px; /* Smaller font */
+    font-size: 18px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1087,13 +1444,13 @@ body {
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 6px; /* Reduced gap */
-    margin-top: 10px; /* Reduced margin */
+    gap: 6px;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
   .carousel-dot {
-    width: 8px; /* Smaller dots */
+    width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #ccc;
@@ -1108,283 +1465,67 @@ body {
     transform: scale(1.2);
   }
 
-  /* Art sections - more compact */
+  /* Art sections */
   .contemporary-art,
   .modern-art,
   .renaissance-art,
   .photography {
     min-height: auto !important;
-    padding: 25px 0 15px 0 !important; /* Reduced padding */
+    padding: 25px 0 15px 0 !important;
     height: auto !important;
-    margin-bottom: 40px; /* Reduced margin */
+    margin-bottom: 40px;
   }
 
-  /* Hero description - more compact */
   .hero-description {
     width: 100% !important;
-    font-size: 14px; /* Smaller font */
+    font-size: 14px;
     line-height: 1.5;
     padding: 0 5px;
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 15px;
   }
 
-  /* Footer - more compact */
+  /* Footer */
   .footer {
     flex-direction: column;
     justify-content: center;
     height: auto;
-    padding: 15px 10px; /* Reduced padding */
+    padding: 15px 10px;
     text-align: center;
-    gap: 10px; /* Reduced gap */
-    margin-top: 30px; /* Reduced margin */
+    gap: 10px;
+    margin-top: 30px;
+    width: 420px;
   }
 
   .footer-logo {
-    font-size: 28px; /* Smaller logo */
+    font-size: 28px;
     margin-bottom: 5px;
   }
 
   .footer-copyright {
-    font-size: 12px; /* Smaller font */
+    font-size: 12px;
   }
 
-  /* Remove extra white space from image containers */
   .hero-image {
-    margin-bottom: 20px; /* Reduced margin */
-    max-height: 300px; /* Limit height */
+    margin-bottom: 20px;
+    max-height: 300px;
     width: 100%;
     max-width: 100%;
   }
 
-  /* Reduce spacing in painters section */
   .painters-section {
-    padding: 30px 0 20px 0 !important; /* Reduced padding */
+    padding: 30px 0 20px 0 !important;
     min-height: auto !important;
   }
 
-  /* Make sure all containers are compact */
   .painters-carousel-container,
   .art-carousel-container {
     padding: 0 !important;
     margin: 0 auto 25px auto !important;
   }
 
-  /* Remove any extra padding from section titles */
   .section-title {
     padding: 0 10px;
     margin-bottom: 20px;
-  }
-}
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-
-  .sidebar {
-    width: 250px;
-    transform: translateX(-100%);
-    animation: none;
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  .sidebar.loaded {
-    transform: translateX(-100%);
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 63px 20px 0 20px;
-  }
-
-  .hero-section {
-    padding: 20px;
-  }
-
-  .hero-title {
-    font-size: 36px;
-  }
-
-  .painters-title {
-    font-size: 48px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  /* Mobile Carousel Styles */
-  .painters-container,
-  .art-section-container {
-    display: none; /* Hide original containers on mobile */
-  }
-
-  /* Show carousel containers */
-  .painters-carousel-container,
-  .art-carousel-container {
-    display: block !important;
-  }
-
-  /* Polaroid style for carousel */
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-
-  .carousel-slide {
-    display: none;
-    background: white;
-    padding: 15px 15px 50px 15px;
-    border-radius: 8px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    position: relative;
-    border: 1px solid #e0e0e0;
-  }
-
-  .carousel-slide.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-  }
-
-  .carousel-slide.polaroid {
-    padding-bottom: 70px; /* More space for caption */
-  }
-
-  .carousel-slide .artwork-img {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    height: 300px !important; /* 1:1 aspect ratio */
-    object-fit: cover;
-    border-radius: 4px;
-    margin: 0 0 15px 0 !important;
-    display: block;
-  }
-
-  .carousel-slide .artwork-info {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
-    display: block;
-    text-align: center;
-    padding: 12px;
-    background: #f9f9f9;
-    border-radius: 4px;
-    border-top: 1px solid #e0e0e0;
-    font-size: 14px;
-  }
-
-  .carousel-slide .painter-card {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 0;
-    width: 100% !important;
-    display: block;
-  }
-
-  .carousel-slide .painter-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 15px;
-  }
-
-  .carousel-slide .painter-name {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .carousel-slide .painter-bio {
-    font-size: 14px;
-  }
-
-  .carousel-slide .painter-name,
-  .carousel-slide .painter-bio {
-    opacity: 1 !important;
-    transform: none !important;
-    text-align: center;
-  }
-
-  /* Carousel controls */
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 25px;
-    margin-bottom: 30px;
-  }
-
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #443627;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-btn:hover {
-    background-color: #5a4a35;
-    transform: scale(1.1);
-  }
-
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-  }
-
-  .carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-dot.active {
-    background-color: #443627;
-    transform: scale(1.2);
-  }
-
-  .contemporary-art,
-  .modern-art,
-  .renaissance-art,
-  .photography {
-    min-height: auto;
-    padding: 40px 20px;
-    height: auto !important;
-  }
-
-  .footer {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 20px;
-    text-align: center;
-    gap: 15px;
   }
 }
 
@@ -1398,277 +1539,6 @@ body {
   .painters-container,
   .art-section-container {
     display: block !important;
-  }
-}
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-
-  .sidebar {
-    width: 250px;
-    transform: translateX(-100%);
-    animation: none;
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  .sidebar.loaded {
-    transform: translateX(-100%);
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 63px 20px 0 20px;
-  }
-
-  .hero-section {
-    padding: 20px;
-  }
-
-  .hero-title {
-    font-size: 36px;
-  }
-
-  .painters-title {
-    font-size: 48px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  /* Mobile Carousel Styles */
-  .painters-container {
-    width: 100%;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .painter-card {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 20px auto;
-    width: 100%;
-    max-width: 300px;
-    display: none;
-  }
-
-  .painter-card.active {
-    display: block;
-  }
-
-  /* Art sections carousel for mobile */
-  .art-section-container {
-    width: 100%;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .artwork-img,
-  .artwork-info {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 20px 0;
-    width: 100% !important;
-    max-width: 300px;
-    height: 300px !important; /* 1:1 aspect ratio */
-    object-fit: cover;
-    display: none;
-  }
-
-  .artwork-img.active,
-  .artwork-info.active {
-    display: block;
-  }
-
-  /* Carousel controls */
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .carousel-slide {
-    display: none;
-  }
-
-  .carousel-slide.active {
-    display: block;
-  }
-
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-    margin-bottom: 30px;
-  }
-
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #443627;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-btn:hover {
-    background-color: #5a4a35;
-    transform: scale(1.1);
-  }
-
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-  }
-
-  .carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-dot.active {
-    background-color: #443627;
-    transform: scale(1.2);
-  }
-
-  .contemporary-art,
-  .modern-art,
-  .renaissance-art,
-  .photography {
-    min-height: auto;
-    padding: 40px 20px;
-    height: auto !important;
-  }
-
-  .footer {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 20px;
-    text-align: center;
-    gap: 15px;
-  }
-}
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-
-  .sidebar {
-    width: 250px;
-    transform: translateX(-100%);
-    animation: none;
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  .sidebar.loaded {
-    transform: translateX(-100%); /* Keep it hidden on mobile by default */
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 63px 20px 0 20px;
-  }
-
-  .hero-section {
-    padding: 20px;
-  }
-
-  .hero-title {
-    font-size: 36px;
-  }
-
-  .painters-title {
-    font-size: 48px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  .painter-card {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 20px auto;
-    width: 100%;
-  }
-
-  /* FIX FOR ARTWORK DISPLAY ON MOBILE */
-  .contemporary-art,
-  .modern-art,
-  .renaissance-art,
-  .photography {
-    min-height: auto;
-    padding: 40px 20px;
-    height: auto !important;
-  }
-
-  .art-section-container {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-  }
-
-  .artwork-img,
-  .artwork-info {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    margin: 20px 0;
-    width: 100% !important;
-    max-width: 100%;
-    height: auto !important;
-  }
-
-  .artwork-img {
-    display: block;
-  }
-
-  .painters-container,
-  .art-section-container {
-    width: 100%;
-    height: auto;
-  }
-
-  .footer {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 20px;
-    text-align: center;
-    gap: 15px;
   }
 }
 
@@ -1690,38 +1560,482 @@ body {
   display: block;
   opacity: 1;
 }
+
+/* ===== IMAGE MODAL/POPUP STYLES ===== */
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: modalZoomIn 0.3s ease;
+}
+
+@keyframes modalZoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-caption {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #443627;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.modal-close:hover {
+  background: #5a4a35;
+  transform: scale(1.1);
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(68, 54, 39, 0.8);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.modal-nav:hover {
+  background: rgba(90, 74, 53, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modal-prev {
+  left: 20px;
+}
+
+.modal-next {
+  right: 20px;
+}
+
+/* Touch/swipe indicators */
+.modal-swipe-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Zoom functionality for modal image */
+.modal-zoom-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10000;
+}
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(68, 54, 39, 0.8);
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+  background: rgba(90, 74, 53, 0.9);
+  transform: scale(1.1);
+}
+
+/* Loading animation for modal */
+.modal-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px 30px;
+  border-radius: 8px;
+}
+
+.modal-loading::after {
+  content: "...";
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+/* For carousel images */
+.carousel-slide img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.02);
+}
+
+/* For desktop - disable modal on desktop if you want */
+@media (min-width: 1025px) {
+  .image-modal {
+    display: none !important;
+  }
+  
+  .painter-card img,
+  .artwork-img {
+    cursor: default;
+  }
+}
+
+/* Mobile-specific modal adjustments */
 @media (max-width: 768px) {
-  /* Remove extra spacing from various elements */
-  body {
-    line-height: 1.4;
+  .modal-content {
+    max-width: 95%;
+    max-height: 85%;
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+  
+  .modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
   }
-
-  p {
-    margin-bottom: 0.8em;
+  
+  .modal-close {
+    top: -35px;
+    right: -10px;
   }
-
-  /* Ensure images don't create extra space */
-  img {
-    vertical-align: middle;
+  
+  .modal-caption {
+    font-size: 12px;
+    bottom: -35px;
   }
-
-  /* Compact form for all carousel slides */
-  .carousel-slide * {
-    margin-top: 0;
-    margin-bottom: 0;
+  
+  .zoom-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
+}
 
-  .carousel-slide * + * {
-    margin-top: 8px;
+@media (max-width: 480px) {
+  .modal-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .modal-prev {
+    left: 10px;
+  }
+  
+  .modal-next {
+    right: 10px;
+  }
+  
+  .zoom-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .modal-swipe-indicator {
+    font-size: 10px;
+    padding: 6px 12px;
+    bottom: 15px;
+  }
+}
+
+/* Remove extra spacing from various elements */
+body {
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 0.8em;
+}
+
+/* Ensure images don't create extra space */
+img {
+  vertical-align: middle;
+}
+
+/* Compact form for all carousel slides */
+.carousel-slide * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.carousel-slide * + * {
+  margin-top: 8px;
+}
+
+/* Additional animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Audio Controls */
+.audio-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out 2s forwards;
+}
+
+.audio-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #443627;
+  border: 2px solid #fffbf0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.audio-btn:hover {
+  background: #5a4a35;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.audio-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-icon, .muted-icon {
+  width: 24px;
+  height: 24px;
+  fill: #fffbf0;
+}
+
+.audio-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: #443627;
+  color: #fffbf0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.audio-btn:hover .audio-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.volume-slider-container {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.audio-controls:hover .volume-slider-container {
+  width: 100px;
+  opacity: 1;
+}
+
+.volume-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #443627;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffbf0;
+  border: 2px solid #443627;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 251, 240, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffbf0;
+  border: 2px solid #443627;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 251, 240, 0.3);
+}
+
+/* Responsive audio controls */
+@media (max-width: 768px) {
+  .audio-controls {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .audio-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .audio-icon, .muted-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .audio-tooltip {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .audio-controls:hover .volume-slider-container {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-controls {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .audio-btn {
+    width: 40px;
+    height: 40px;
   }
 }

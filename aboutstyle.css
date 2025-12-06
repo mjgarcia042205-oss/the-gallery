@@ -228,7 +228,6 @@ body {
   margin-bottom: var(--spacing-3xl);
   text-transform: uppercase;
   line-height: 1.2;
-  animation: fadeInUp 1s ease-out;
 }
 
 .description {
@@ -237,7 +236,6 @@ body {
   line-height: 1.6;
   margin-bottom: var(--spacing-3xl);
   text-align: center;
-  animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .bold {
@@ -263,7 +261,6 @@ body {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .group-photo {
@@ -306,18 +303,6 @@ body {
   color: var(--color-white);
   font-size: var(--font-size-sm);
   font-family: var(--font-secondary);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

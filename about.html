@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>About The Gallery - Our Story & Mission</title>
+    <title>About The Gallery</title>
     <meta
       name="description"
       content="Learn about The Gallery's mission, history, and our commitment to showcasing diverse art from classical to contemporary artists. A project by Tarlac State University students."
@@ -69,7 +69,7 @@
           <div class="sidebar-title">THE GALLERY</div>
           <div class="sidebar-divider"></div>
 
-          <div class="nav-item" data-href="index.html">
+          <div class="nav-item" data-href="homepage.html">
             <div class="nav-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                 <path
@@ -148,18 +148,21 @@
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
         const navItems = document.querySelectorAll(".nav-item[data-href]");
+        const groupPhoto = document.querySelector(".group-photo");
 
         // Function to handle screen size changes
         function handleScreenSize() {
           if (window.innerWidth <= 768) {
             // Mobile: hide sidebar initially
             sidebar.classList.remove("active");
+            overlay.classList.remove("active");
             menuToggle.style.display = "block";
+            document.body.style.overflow = "";
           } else {
             // Desktop: show sidebar
             sidebar.classList.add("active");
-            menuToggle.style.display = "none";
             overlay.classList.remove("active");
+            menuToggle.style.display = "none";
             document.body.style.overflow = "";
           }
         }
@@ -228,8 +231,7 @@
         // Handle window resize
         window.addEventListener("resize", handleScreenSize);
 
-        // Image hover effect
-        const groupPhoto = document.querySelector(".group-photo");
+        // Image hover effect - Keep the inline style as it's just for hover
         if (groupPhoto) {
           groupPhoto.addEventListener("mouseenter", function () {
             this.style.transform = "scale(1.02)";

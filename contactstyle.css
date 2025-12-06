@@ -9,6 +9,8 @@
   --color-black: #000000;
   --color-gray: #666;
   --color-border: #9c9c9c;
+  --color-success: #2a7c2a;
+  --color-success-hover: #236b23;
 
   /* Typography */
   --font-primary: "Poppins", sans-serif;
@@ -47,15 +49,24 @@
   /* Shadows */
   --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
   --shadow-xs: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-large: 0 15px 40px rgba(0, 0, 0, 0.2);
 
   /* Transitions */
   --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-fast: 0.2s ease;
 
   /* Form Elements */
   --input-height: 32px;
   --textarea-height: 71px;
   --button-height: 36px;
   --button-border-radius: 176px;
+
+  /* Animation Durations */
+  --animation-fast: 0.3s;
+  --animation-base: 0.5s;
+  --animation-slow: 0.8s;
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -71,6 +82,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* ===== LAYOUT COMPONENTS ===== */
@@ -305,7 +317,7 @@ textarea.form-control {
   font-weight: 700;
   font-size: var(--font-size-sm);
   cursor: pointer;
-  transition: background var(--transition-base), transform 0.2s ease;
+  transition: background var(--transition-base), transform var(--transition-fast);
 }
 
 .submit-btn:hover {
@@ -315,6 +327,31 @@ textarea.form-control {
 
 .submit-btn:active {
   transform: translateY(0);
+}
+
+/* Form States */
+.submit-btn.sending {
+  animation: sending 1s infinite;
+  opacity: 0.8;
+}
+
+.submit-btn.success {
+  background-color: var(--color-success);
+  animation: successPulse 1.5s ease-out;
+}
+
+.submit-btn.success:hover {
+  background-color: var(--color-success-hover);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.contact-form.success {
+  animation: formSuccess 1s ease;
 }
 
 /* Footer Content */
@@ -493,6 +530,7 @@ textarea.form-control {
     width: 100%;
   }
 }
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   from {
@@ -591,17 +629,50 @@ textarea.form-control {
   }
 }
 
+@keyframes sending {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes formSuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
 /* ===== ANIMATION CLASSES ===== */
 .animate-fade-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp var(--animation-base) ease-out forwards;
 }
 
 .animate-fade-left {
-  animation: fadeInLeft 0.6s ease-out forwards;
+  animation: fadeInLeft var(--animation-base) ease-out forwards;
 }
 
 .animate-fade-right {
-  animation: fadeInRight 0.6s ease-out forwards;
+  animation: fadeInRight var(--animation-base) ease-out forwards;
 }
 
 .animate-float {
@@ -613,11 +684,11 @@ textarea.form-control {
 }
 
 .animate-slide-left {
-  animation: slideInFromLeft 0.5s ease-out forwards;
+  animation: slideInFromLeft var(--animation-base) ease-out forwards;
 }
 
 .animate-slide-right {
-  animation: slideInFromRight 0.5s ease-out forwards;
+  animation: slideInFromRight var(--animation-base) ease-out forwards;
 }
 
 .delay-100 {
@@ -636,14 +707,35 @@ textarea.form-control {
   animation-delay: 0.4s;
 }
 
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-800 {
+  animation-delay: 0.8s;
+}
+
+.delay-900 {
+  animation-delay: 0.9s;
+}
+
 /* Apply animations to contact elements */
 .contact-container {
-  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  animation: fadeInUp var(--animation-slow) ease-out forwards;
 }
 
 .contact-image {
   opacity: 0;
-  animation: fadeInLeft 0.8s ease-out forwards;
+  animation: fadeInLeft var(--animation-slow) ease-out forwards;
   animation-delay: 0.2s;
 }
 
@@ -653,25 +745,25 @@ textarea.form-control {
 
 .contact-image img:hover {
   transform: scale(1.02) rotate(1deg);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-large);
 }
 
 .image-caption {
   opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp var(--animation-slow) ease-out forwards;
   animation-delay: 0.4s;
 }
 
 .contact-form {
   opacity: 0;
-  animation: fadeInRight 0.8s ease-out forwards;
+  animation: fadeInRight var(--animation-slow) ease-out forwards;
   animation-delay: 0.3s;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .contact-form:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-medium);
 }
 
 /* Form field animations */
@@ -694,11 +786,11 @@ textarea.form-control {
 }
 
 .form-control {
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
 }
 
 .form-control:focus {
-  animation: formFieldFocus 0.3s ease;
+  animation: formFieldFocus var(--animation-fast) ease;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(68, 54, 39, 0.1);
 }
@@ -707,7 +799,7 @@ textarea.form-control {
 .submit-btn {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.5s ease-out forwards;
+  animation: fadeInUp var(--animation-base) ease-out forwards;
   animation-delay: 0.8s;
   position: relative;
   overflow: hidden;
@@ -728,76 +820,50 @@ textarea.form-control {
 }
 
 .submit-btn:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
+  animation: ripple var(--transition-slow) ease-out;
 }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(20, 20);
-    opacity: 0;
-  }
-}
-
-.submit-btn.sending {
-  animation: pulse 1.5s infinite;
-}
-
-.submit-btn.success {
-  animation: successPulse 1.5s ease-out;
-}
-
-/* Footer animation */
-.footer {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.9s;
-}
-
-/* Mobile adjustments for animations */
-@media (max-width: 768px) {
-  .contact-image {
-    animation: fadeInUp 0.8s ease-out forwards;
-    animation-delay: 0.2s;
-  }
-
-  .contact-form {
-    animation: fadeInUp 0.8s ease-out forwards;
-    animation-delay: 0.3s;
-  }
-}
-
-/* Add these to your existing contact form CSS */
+/* Form title animations */
 .form-title h2 {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp var(--animation-base) ease-out forwards;
   animation-delay: 0.4s;
 }
 
 .form-title p {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp var(--animation-base) ease-out forwards;
   animation-delay: 0.5s;
 }
 
-/* Loading state for form submission */
-@keyframes sending {
-  0%,
-  100% {
-    opacity: 1;
+/* Footer animation */
+.footer {
+  opacity: 0;
+  animation: fadeInUp var(--animation-slow) ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+/* Mobile adjustments for animations */
+@media (max-width: 768px) {
+  .contact-image {
+    animation: fadeInUp var(--animation-slow) ease-out forwards;
+    animation-delay: 0.2s;
   }
-  50% {
-    opacity: 0.7;
+
+  .contact-form {
+    animation: fadeInUp var(--animation-slow) ease-out forwards;
+    animation-delay: 0.3s;
+  }
+
+  .contact-form:hover {
+    transform: none;
+    box-shadow: var(--shadow-light);
   }
 }
 
-.submit-btn.sending {
-  animation: sending 1s infinite;
+/* Override for body overflow when sidebar is active */
+body.sidebar-active {
+  overflow: hidden;
 }
-
-

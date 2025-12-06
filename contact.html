@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>Contact The Gallery - Get In Touch & Submit Art</title>
+    <title>Contact The Gallery</title>
     <meta
       name="description"
       content="Contact The Gallery for art submissions, exhibition inquiries, partnerships, and visit information. Submit your artwork to be featured in our collection."
@@ -72,7 +72,7 @@
           <div class="sidebar-title">THE GALLERY</div>
           <div class="sidebar-divider"></div>
 
-          <div class="nav-item" data-href="index.html">
+          <div class="nav-item" data-href="homepage.html">
             <div class="nav-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                 <path
@@ -177,7 +177,7 @@
       <div class="copyright">©2025, All rights reserved.</div>
     </div>
 
-    <!-- SINGLE JavaScript Section -->
+    <!-- JavaScript -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Get elements
@@ -208,7 +208,7 @@
         // Initial check
         handleScreenSize();
 
-        // Mobile menu functionality - SIMPLE VERSION
+        // Mobile menu functionality
         if (menuToggle && sidebar && overlay) {
           menuToggle.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -285,19 +285,25 @@
             const originalText = submitBtn.textContent;
             submitBtn.textContent = "Sending...";
             submitBtn.disabled = true;
+            submitBtn.classList.add("sending");
 
             // Simulate API call
             setTimeout(() => {
               // Success state
               submitBtn.textContent = "Message Sent!";
-              submitBtn.style.backgroundColor = "#2a7c2a";
+              submitBtn.classList.remove("sending");
+              submitBtn.classList.add("success");
 
-              // Reset form
+              // Add success animation to the form
+              contactForm.classList.add("success");
+
+              // Reset form after delay
               setTimeout(() => {
                 contactForm.reset();
                 submitBtn.textContent = originalText;
-                submitBtn.style.backgroundColor = "";
                 submitBtn.disabled = false;
+                submitBtn.classList.remove("success");
+                contactForm.classList.remove("success");
                 alert(
                   "Thank you for your message! We will get back to you soon."
                 );
@@ -309,29 +315,6 @@
         // Handle window resize
         window.addEventListener("resize", handleScreenSize);
       });
-
-      // Update the form submission success part in your JavaScript
-      setTimeout(() => {
-        // Success state with animation
-        submitBtn.textContent = "Message Sent!";
-        submitBtn.style.backgroundColor = "#2a7c2a";
-        submitBtn.classList.add("success");
-
-        // Add success animation to the form
-        contactForm.classList.add("success");
-
-        // Reset form
-        setTimeout(() => {
-          contactForm.reset();
-          submitBtn.textContent = originalText;
-          submitBtn.style.backgroundColor = "";
-          submitBtn.disabled = false;
-          submitBtn.classList.remove("success");
-          contactForm.classList.remove("success");
-          alert("Thank you for your message! We will get back to you soon.");
-        }, 2000);
-      }, 1500);
-      
     </script>
   </body>
 </html>

@@ -1,0 +1,426 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #443627;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: #eee5d3;
+        }
+
+        /* Hero Section with enhanced animations */
+        .hero {
+            background: linear-gradient(135deg, rgba(238, 229, 211, 0.95) 0%, rgba(245, 240, 228, 0.9) 100%);
+            color: #443627;
+            padding: 6rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle background pattern */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(68, 54, 39, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(68, 54, 39, 0.03) 0%, transparent 20%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+
+        /* Decorative underline animation */
+        .hero-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #443627;
+            animation: expandLine 1.5s 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            border-radius: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeIn 1.2s 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #443627;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 400;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+            box-shadow: 0 4px 15px rgba(68, 54, 39, 0.2);
+            border: none;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover:not(.loading):not(.success) {
+            background: #5a4a35;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(68, 54, 39, 0.3);
+        }
+
+        .cta-button:active:not(.loading):not(.success) {
+            transform: translateY(-1px);
+        }
+
+        /* Ripple effect on hover */
+        .cta-button::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform 0.5s, opacity 0.8s;
+        }
+
+        .cta-button:active:not(.loading)::after {
+            transform: scale(0, 0);
+            opacity: 0.3;
+            transition: 0s;
+        }
+
+        .cta-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover:not(.loading):not(.success) i {
+            transform: translateX(5px);
+        }
+
+        /* Loading state */
+        .cta-button.loading {
+            background: #5a4a35;
+            pointer-events: none;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        .cta-button.loading .button-text {
+            opacity: 0;
+        }
+
+        .cta-button.loading .button-icon {
+            transform: translateX(0);
+        }
+
+        .cta-button.loading::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: buttonSpinner 0.8s linear infinite;
+        }
+
+        /* Success state */
+        .cta-button.success {
+            background: #4a6444;
+            pointer-events: none;
+        }
+
+        .cta-button.success .button-text {
+            opacity: 0;
+        }
+
+        .cta-button.success .button-icon {
+            opacity: 0;
+        }
+
+        .cta-button.success::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            animation: checkmarkAppear 0.3s ease forwards;
+        }
+
+        /* Button click animation container */
+        .button-animation-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        /* Animation particles */
+        .particle {
+            position: absolute;
+            background-color: rgba(68, 54, 39, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Floating decorative elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(68, 54, 39, 0.05);
+            z-index: 0;
+            animation: float 20s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 5s;
+            animation-duration: 30s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            right: 15%;
+            animation-delay: 10s;
+            animation-duration: 20s;
+        }
+
+        /* Page transition overlay */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #443627;
+            z-index: 1000;
+            transform: translateX(-100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #eee5d3;
+            font-size: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .page-transition.active {
+            animation: slideIn 0.6s forwards, fadeOut 0.3s 1.7s forwards;
+        }
+
+        .transition-text {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .page-transition.active .transition-text {
+            animation: fadeInUp 0.5s 0.3s forwards;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandLine {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(15px) rotate(240deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Button spinner */
+        @keyframes buttonSpinner {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Checkmark animation */
+        @keyframes checkmarkAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Page transition animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Particle explosion animation */
+        @keyframes particleExplode {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Subtle pulse animation for title */
+        @keyframes subtlePulse {
+            0%, 100% {
+                text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                text-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        .hero-title {
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
+                       subtlePulse 4s 2s infinite ease-in-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
