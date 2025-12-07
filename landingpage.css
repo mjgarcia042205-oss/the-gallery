@@ -1,0 +1,561 @@
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #443627;
+        color: #333;
+        line-height: 1.6;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: #eee5d3;
+        position: relative;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, rgba(238, 229, 211, 0.95) 0%, rgba(245, 240, 228, 0.9) 100%);
+        color: #443627;
+        padding: 2vh 1rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+        width: 90%;
+        max-width: 800px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 8vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        padding-bottom: 8px;
+      }
+
+      .hero-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: #443627;
+        animation: expandLine 1.5s 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        border-radius: 2px;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(0.95rem, 4vw, 1.3rem);
+        font-weight: 300;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        opacity: 0;
+        animation: fadeIn 1.2s 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #443627;
+        color: white;
+        padding: clamp(0.9rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
+        text-decoration: none;
+        font-weight: 400;
+        border-radius: 4px;
+        transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 1s 1s forwards;
+        box-shadow: 0 4px 15px rgba(68, 54, 39, 0.2);
+        border: none;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+        min-width: 180px;
+        max-width: 300px;
+        width: auto;
+      }
+
+      .cta-button:hover:not(.loading):not(.success) {
+        background: #5a4a35;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(68, 54, 39, 0.3);
+      }
+
+      /* Page transition */
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #443627;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+        overflow: hidden;
+      }
+
+      .page-transition.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Gallery Preview */
+      .gallery-preview {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(30px) scale(0.9);
+        transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                    visibility 0.8s;
+        z-index: 1001;
+        padding: 1rem;
+      }
+
+      .gallery-preview.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Preview content */
+      .preview-content {
+        text-align: center;
+        width: 90vw;
+        max-width: 700px;
+        padding: clamp(1rem, 3vh, 2rem);
+      }
+
+      /* Preview title - YOUR ORIGINAL ANIMATION STYLE */
+      .preview-title {
+        font-size: clamp(1.8rem, 7vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+        color: #eee5d3;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: previewTitleAppear 0.8s 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        text-shadow: 0 0 10px rgba(238, 229, 211, 0.5);
+        line-height: 1.2;
+      }
+
+      @keyframes previewTitleAppear {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Preview subtitle - YOUR ORIGINAL ANIMATION STYLE */
+      .preview-subtitle {
+        font-size: clamp(0.9rem, 3.5vw, 1.4rem);
+        color: #d4b483;
+        margin-bottom: clamp(1.5rem, 4vh, 3rem);
+        opacity: 0;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        animation: previewSubtitleAppear 0.8s 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      }
+
+      @keyframes previewSubtitleAppear {
+        to {
+          opacity: 0.9;
+        }
+      }
+
+      /* ART PREVIEW - KEEPING YOUR ORIGINAL ANIMATION STYLES */
+      .art-preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(1rem, 4vw, 3rem);
+        margin: clamp(1.5rem, 4vh, 3rem) 0;
+        flex-wrap: wrap;
+      }
+
+      /* Art frames - responsive but with your original animation feel */
+      .art-frame {
+        width: clamp(70px, 20vw, 140px);
+        height: clamp(100px, 25vh, 180px);
+        background: linear-gradient(135deg, #5a4a35, #443627);
+        border: clamp(2px, 0.5vw, 3px) solid #d4b483;
+        border-radius: clamp(6px, 1vw, 8px);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      /* Mobile-specific adjustments for your animations */
+      @media (max-width: 767px) {
+        .art-frame {
+          transform: translateY(30px) scale(0.7);
+        }
+        
+        .art-frame:nth-child(1) {
+          animation: framePopInMobile 0.6s 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatMobile 3s ease-in-out infinite;
+        }
+
+        .art-frame:nth-child(2) {
+          animation: framePopInMobile 0.6s 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatMobile 3s ease-in-out 0.3s infinite;
+        }
+
+        .art-frame:nth-child(3) {
+          animation: framePopInMobile 0.6s 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatMobile 3s ease-in-out 0.6s infinite;
+        }
+      }
+
+      /* Desktop animations - YOUR ORIGINAL DESKTOP ANIMATIONS */
+      @media (min-width: 768px) {
+        .art-frame {
+          transform: translateY(50px) scale(0.8);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .art-frame:nth-child(1) {
+          animation: framePopInDesktop 0.8s 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatDesktop 4s ease-in-out infinite;
+        }
+
+        .art-frame:nth-child(2) {
+          animation: framePopInDesktop 0.8s 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatDesktop 4s ease-in-out 0.5s infinite;
+        }
+
+        .art-frame:nth-child(3) {
+          animation: framePopInDesktop 0.8s 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                   frameFloatDesktop 4s ease-in-out 1s infinite;
+        }
+      }
+
+      /* YOUR ORIGINAL MOBILE ANIMATIONS - kept exactly as you had them */
+      @keyframes framePopInMobile {
+        0% {
+          opacity: 0;
+          transform: translateY(30px) scale(0.5) rotate(-10deg);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(-8px) scale(1.05) rotate(2deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes frameFloatMobile {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-8px) rotate(1deg);
+        }
+        50% {
+          transform: translateY(-3px) rotate(-0.5deg);
+        }
+        75% {
+          transform: translateY(-6px) rotate(0.5deg);
+        }
+      }
+
+      /* YOUR ORIGINAL DESKTOP ANIMATIONS - kept exactly as you had them */
+      @keyframes framePopInDesktop {
+        0% {
+          opacity: 0;
+          transform: translateY(50px) scale(0.5) rotate(-20deg);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(-15px) scale(1.1) rotate(5deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes frameFloatDesktop {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(-1deg);
+        }
+        75% {
+          transform: translateY(-15px) rotate(1deg);
+        }
+      }
+
+      /* Art frame content - responsive */
+      .art-frame::before {
+        content: '';
+        position: absolute;
+        top: clamp(8px, 1.5vw, 15px);
+        left: clamp(8px, 1.5vw, 15px);
+        right: clamp(8px, 1.5vw, 15px);
+        bottom: clamp(8px, 1.5vw, 15px);
+        background: linear-gradient(135deg, #eee5d3, #d4b483);
+        opacity: 0.15;
+        border-radius: clamp(3px, 0.5vw, 6px);
+      }
+
+      .art-frame::after {
+        content: '🎨';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(1.2rem, 4vw, 2.5rem);
+        opacity: 0.3;
+      }
+
+      /* Loading dots - YOUR ORIGINAL STYLE with responsiveness */
+      .loading-dots {
+        display: flex;
+        justify-content: center;
+        gap: clamp(8px, 2vw, 15px);
+        margin-top: clamp(1.5rem, 4vh, 3rem);
+        opacity: 0;
+      }
+
+      /* Mobile loading dots */
+      @media (max-width: 767px) {
+        .loading-dots {
+          animation: dotsAppearMobile 0.5s 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+        
+        .dot {
+          width: 8px;
+          height: 8px;
+          animation: pulseMobile 1.5s ease-in-out infinite;
+        }
+      }
+
+      /* Desktop loading dots */
+      @media (min-width: 768px) {
+        .loading-dots {
+          animation: dotsAppearDesktop 0.5s 2.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+        
+        .dot {
+          width: 16px;
+          height: 16px;
+          animation: pulseDesktop 1.5s ease-in-out infinite;
+        }
+      }
+
+      .dot {
+        background: #d4b483;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(212, 180, 131, 0.5);
+      }
+
+      .dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      /* YOUR ORIGINAL MOBILE ANIMATIONS for dots */
+      @keyframes dotsAppearMobile {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulseMobile {
+        0%, 100% {
+          opacity: 0.3;
+          transform: scale(0.7);
+          background: #eee5d3;
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+          background: #d4b483;
+          box-shadow: 0 0 8px rgba(212, 180, 131, 0.8);
+        }
+      }
+
+      /* YOUR ORIGINAL DESKTOP ANIMATIONS for dots */
+      @keyframes dotsAppearDesktop {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulseDesktop {
+        0%, 100% {
+          opacity: 0.3;
+          transform: scale(0.8);
+          background: #eee5d3;
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.3);
+          background: #d4b483;
+          box-shadow: 0 0 15px rgba(212, 180, 131, 0.8);
+        }
+      }
+
+      /* Base keyframes - YOUR ORIGINAL */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes expandLine {
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes buttonSpinner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes checkmarkAppear {
+        0% {
+          opacity: 0;
+          transform: scale(0.5) translate(-50%, -50%);
+        }
+        70% {
+          opacity: 1;
+          transform: scale(1.2) translate(-50%, -50%);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translate(-50%, -50%);
+        }
+      }
+
+      @keyframes particleExplode {
+        0% {
+          transform: translate(0, 0) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--tx), var(--ty)) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Button loading state - FIXED: Hide everything and center the checkmark */
+      .cta-button.loading .button-text {
+        opacity: 0.7;
+      }
+
+      .cta-button.loading .button-icon {
+        animation: buttonSpinner 1s linear infinite;
+      }
+
+      /* FIXED: Hide both text AND arrow, and properly center the checkmark */
+      .cta-button.success .button-text {
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .cta-button.success .button-icon {
+        position: absolute; /* Make it absolute to center in button */
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .cta-button.success .button-icon i {
+        display: none !important; /* Completely hide the arrow */
+      }
+
+      .cta-button.success .button-icon::after {
+        content: "✓";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2rem;
+        opacity: 0;
+        animation: checkmarkAppear 0.5s ease-out forwards;
+      }
+
+      /* Particle styles */
+      .particle {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+      }

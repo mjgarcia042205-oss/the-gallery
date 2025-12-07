@@ -1,0 +1,2346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fffbf0;
+  color: #443627;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Layout classes */
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: #fffbf0;
+}
+
+/* Header */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 63px;
+  background-color: #443627;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 25px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #443627;
+  border-radius: 3px;
+  z-index: 1002;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+
+.mobile-menu-toggle span {
+  width: 24px;
+  height: 3px;
+  background-color: #fffbf0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 184px;
+  width: calc(100% - 184px);
+  padding: 63px 0 0 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.3s forwards;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 63px;
+  left: 0;
+  width: 210px;
+  height: calc(100vh - 63px);
+  background-color: #fff3e5;
+  border-right: 1px solid black;
+  z-index: 999;
+  overflow-y: auto;
+  transform: translateX(0);
+  animation: slideInLeft 0.6s ease-out 0.2s;
+}
+
+.sidebar-content {
+  padding: 14px 16px;
+}
+
+.sidebar-title {
+  text-align: left;
+  color: #443627;
+  font-size: 26.5px;
+  font-weight: 700;
+  line-height: 59.25px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out 0.5s forwards;
+}
+
+.sidebar-divider {
+  width: 175px;
+  height: 1.5px;
+  background-color: #443627;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transform: scaleX(0);
+  animation: expandWidth 0.4s ease-out 0.7s forwards;
+}
+
+.sidebar.loaded {
+  transform: translateX(0);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 7.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.nav-item:nth-child(3) {
+  animation: slideInItem 0.4s ease-out 0.8s forwards;
+}
+.nav-item:nth-child(4) {
+  animation: slideInItem 0.4s ease-out 0.85s forwards;
+}
+.nav-item:nth-child(5) {
+  animation: slideInItem 0.4s ease-out 0.9s forwards;
+}
+.nav-item:nth-child(6) {
+  animation: slideInItem 0.4s ease-out 0.95s forwards;
+}
+.nav-item:nth-child(7) {
+  animation: slideInItem 0.4s ease-out 1s forwards;
+}
+.nav-item:nth-child(8) {
+  animation: slideInItem 0.4s ease-out 1.05s forwards;
+}
+.nav-item:nth-child(9) {
+  animation: slideInItem 0.4s ease-out 1.1s forwards;
+}
+.nav-item:nth-child(10) {
+  animation: slideInItem 0.4s ease-out 1.15s forwards;
+}
+
+.nav-item.active {
+  background-color: rgba(65, 44, 21, 0.08);
+}
+
+.nav-item:hover {
+  background-color: rgba(65, 44, 21, 0.05);
+  transform: translateX(5px);
+}
+
+.nav-icon {
+  width: 25px;
+  height: 25px;
+  min-width: 16px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+  transform: scale(1.2);
+}
+
+.nav-text {
+  color: #412c15;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Content sections */
+.section {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-divider {
+  width: 90%;
+  height: 1px;
+  background-color: black;
+  margin: 50px 0;
+  transform: scaleX(0);
+  transition: transform 0.6s ease-out;
+}
+
+.section-divider.visible {
+  transform: scaleX(1);
+}
+
+/* Hero section */
+.hero-section {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 1108px;
+  max-width: 90%;
+  height: 600px;
+  max-height: 948px;
+  object-fit: cover;
+  object-position: center 10%;
+  opacity: 0.8;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  transform: scale(0.60);
+  opacity: 0;
+  animation: zoomIn 1s ease-out 0.5s forwards, float 6s ease-in-out infinite 1.5s;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hero-title {
+  font-size: 79px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: #443627;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-description {
+  width: 1056px;
+  max-width: 90%;
+  text-align: center;
+  font-size: 16.09px;
+  line-height: 1.6;
+  color: #443627;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+.hero-description-bold {
+  font-weight: 700;
+}
+
+/* Painters section */
+.painters-section {
+  width: 100%;
+  padding: 60px 40px;
+  position: relative;
+  min-height: 1200px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.painters-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.painters-title {
+  font-size: 105px;
+  font-weight: 700;
+  text-align: center;
+  color: black;
+  margin-bottom: 0px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.painters-section.visible .painters-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Painter cards container */
+.painters-container {
+  position: relative;
+  width: 1370px;
+  max-width: 90%;
+  height: 1100px;
+  margin: 0 auto;
+}
+
+/* Painter cards */
+.painter-card {
+  position: absolute;
+  width: 337px;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.painter-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.painter-card img {
+  width: 100%;
+  height: 564px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.painter-card:hover img {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.painter-name {
+  font-size: 19.72px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease-out 0.1s;
+}
+
+.painter-card.visible .painter-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.painter-bio {
+  font-size: 16.4px;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease-out 0.2s;
+}
+
+.painter-card.visible .painter-bio {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* EXTRACTED INLINE STYLES FOR PAINTER CARDS */
+.painter-card.leonardo {
+  left: 171px;
+  top: 177px;
+}
+
+.painter-card.van-gogh {
+  left: 538px;
+  top: 176px;
+}
+
+.painter-card.monet {
+  left: 905px;
+  top: 177px;
+}
+
+/* Art sections container */
+.art-section-container {
+  position: relative;
+  width: 1370px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Contemporary Art Section Styles */
+.contemporary-art,
+.modern-art,
+.renaissance-art,
+.photography {
+  width: 100%;
+  position: relative;
+  min-height: 2500px;
+  padding: 40px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.contemporary-art.visible,
+.modern-art.visible,
+.renaissance-art.visible,
+.photography.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photography {
+  min-height: 1300px;
+}
+
+.section-title {
+  font-size: 80px;
+  font-weight: 700;
+  margin-bottom: -80px;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.contemporary-art.visible .section-title,
+.modern-art.visible .section-title,
+.renaissance-art.visible .section-title,
+.photography.visible .section-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Common artwork styles */
+.artwork-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 4px;
+  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.artwork-img.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.artwork-info {
+  position: absolute;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.artwork-info.visible {
+  transform: translateY(0);
+}
+
+.artwork-img:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.artwork-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.artwork-details {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* EXTRACTED CONTEMPORARY ART STYLES */
+.artwork-group {
+  position: absolute;
+}
+
+/* Julie Mehretu */
+.artwork-group.julie {
+  left: 40px;
+  top: 227px;
+  width: 449px;
+}
+
+.artwork-group.julie .artwork-img {
+  width: 449px;
+  height: 449px;
+}
+
+.artwork-info.julie {
+  left: 35px;
+  top: 713px;
+  width: 421px;
+  height: 109px;
+}
+
+/* Joan Snyder */
+.artwork-group.joan {
+  left: 866px;
+  top: 180px;
+  width: 494px;
+}
+
+.artwork-group.joan .artwork-img {
+  width: 494px;
+  height: 370px;
+}
+
+.artwork-info.joan {
+  left: 893px;
+  top: 575px;
+  width: 181px;
+  height: 101px;
+}
+
+/* Julian Schnabel */
+.artwork-group.julian {
+  left: 516px;
+  top: 320px;
+  width: 324px;
+}
+
+.artwork-group.julian .artwork-img {
+  width: 324px;
+  height: 389px;
+}
+
+.artwork-info.julian {
+  left: 528px;
+  top: 729px;
+  width: 216px;
+  height: 99px;
+}
+
+/* Santiago Yahuarcani */
+.artwork-group.santiago {
+  left: 46px;
+  top: 865px;
+  width: 785px;
+}
+
+.artwork-group.santiago .artwork-img {
+  width: 785px;
+  height: 424px;
+}
+
+.artwork-info.santiago {
+  left: 46px;
+  top: 1308px;
+  width: 224px;
+  height: 88px;
+}
+
+/* Julian Lethbridge */
+.artwork-group.lethbridge {
+  left: 877px;
+  top: 713px;
+  width: 483px;
+}
+
+.artwork-group.lethbridge .artwork-img {
+  width: 483px;
+  height: 581px;
+}
+
+.artwork-info.lethbridge {
+  left: 877px;
+  top: 1317px;
+  width: 193px;
+  height: 109px;
+}
+
+/* Mark Grotjahn */
+.artwork-group.mark {
+  left: 794px;
+  top: 1552px;
+  width: 567px;
+}
+
+.artwork-group.mark .artwork-img {
+  width: 567px;
+  height: 403px;
+}
+
+.artwork-info.mark {
+  left: 40px;
+  top: 1980px;
+  width: 317px;
+  height: 88px;
+}
+
+/* Josh Smith */
+.artwork-group.josh {
+  left: 40px;
+  top: 1477px;
+  width: 349px;
+}
+
+.artwork-group.josh .artwork-img {
+  width: 349px;
+  height: 484px;
+}
+
+.artwork-info.josh {
+  left: 418px;
+  top: 1842px;
+  width: 223px;
+  height: 88px;
+}
+
+/* Michael Armitage */
+.artwork-group.michael {
+  left: 418px;
+  top: 1385px;
+  width: 358px;
+}
+
+.artwork-group.michael .artwork-img {
+  width: 358px;
+  height: 446px;
+}
+
+.artwork-info.michael {
+  left: 794px;
+  top: 1975px;
+  width: 292px;
+  height: 88px;
+}
+
+/* EXTRACTED MODERN ART STYLES */
+/* Richard Paul Lohse */
+.artwork-group.richard {
+  left: 939px;
+  top: 1517px;
+  width: 416px;
+}
+
+.artwork-group.richard .artwork-img {
+  width: 416px;
+  height: 414px;
+}
+
+.artwork-info.richard {
+  left: 939px;
+  top: 1945px;
+  width: 417px;
+  height: 87px;
+}
+
+/* Jan Mauller */
+.artwork-group.jan {
+  left: 34px;
+  top: 877px;
+  width: 742px;
+}
+
+.artwork-group.jan .artwork-img {
+  width: 742px;
+  height: 423px;
+}
+
+.artwork-info.jan {
+  left: 34px;
+  top: 1307px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Raphael Soyer */
+.artwork-group.raphael {
+  left: 34px;
+  top: 236px;
+  width: 298px;
+}
+
+.artwork-group.raphael .artwork-img {
+  width: 298px;
+  height: 375px;
+}
+
+.artwork-info.raphael {
+  left: 34px;
+  top: 630px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Jane Wilson */
+.artwork-group.jane {
+  left: 34px;
+  top: 1438px;
+  width: 540px;
+}
+
+.artwork-group.jane .artwork-img {
+  width: 540px;
+  height: 407px;
+}
+
+.artwork-info.jane {
+  left: 34px;
+  top: 1859px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Salvatore Scarpitta */
+.artwork-group.salvatore {
+  left: 610px;
+  top: 1608px;
+  width: 291px;
+}
+
+.artwork-group.salvatore .artwork-img {
+  width: 291px;
+  height: 377px;
+}
+
+.artwork-info.salvatore {
+  left: 610px;
+  top: 1994px;
+  width: 290px;
+  height: 87px;
+}
+
+/* Elmer Bischoff */
+.artwork-group.elmer {
+  left: 358px;
+  top: 113px;
+  width: 467px;
+}
+
+.artwork-group.elmer .artwork-img {
+  width: 467px;
+  height: 572px;
+}
+
+.artwork-info.elmer {
+  left: 358px;
+  top: 702px;
+  width: 289px;
+  height: 87px;
+}
+
+/* Remedios Varo */
+.artwork-group.remedios {
+  left: 802px;
+  top: 989px;
+  width: 552px;
+}
+
+.artwork-group.remedios .artwork-img {
+  width: 552px;
+  height: 410px;
+}
+
+.artwork-info.remedios {
+  left: 802px;
+  top: 1410px;
+  width: 553px;
+  height: 87px;
+}
+
+/* Jean Dubuffet */
+.artwork-group.jean {
+  left: 850px;
+  top: 213px;
+  width: 505px;
+}
+
+.artwork-group.jean .artwork-img {
+  width: 505px;
+  height: 592px;
+}
+
+.artwork-info.jean {
+  left: 850px;
+  top: 826px;
+  width: 505px;
+  height: 87px;
+}
+
+/* EXTRACTED RENAISSANCE ART STYLES */
+/* Caravaggio - Medusa */
+.artwork-group.caravaggio-medusa {
+  left: 60px;
+  top: 1273px;
+  width: 434px;
+}
+
+.artwork-group.caravaggio-medusa .artwork-img {
+  width: 434px;
+  height: 531px;
+}
+
+.artwork-info.caravaggio-medusa {
+  left: 60px;
+  top: 1819px;
+  width: 269px;
+  height: 81px;
+}
+
+/* Titian */
+.artwork-group.titian {
+  left: 67px;
+  top: 248px;
+  width: 533px;
+}
+
+.artwork-group.titian .artwork-img {
+  width: 533px;
+  height: 401px;
+}
+
+.artwork-info.titian {
+  left: 64px;
+  top: 662px;
+  width: 287px;
+  height: 86px;
+}
+
+/* Leonardo da Vinci - Lady with Ermine */
+.artwork-group.leonardo-lady {
+  left: 1064px;
+  top: 775px;
+  width: 332px;
+}
+
+.artwork-group.leonardo-lady .artwork-img {
+  width: 332px;
+  height: 418px;
+}
+
+.artwork-info.leonardo-lady {
+  left: 1064px;
+  top: 1208px;
+  width: 322px;
+  height: 110px;
+}
+
+/* Caravaggio - Supper at Emmaus */
+.artwork-group.caravaggio-supper {
+  left: 657px;
+  top: 138px;
+  width: 777px;
+}
+
+.artwork-group.caravaggio-supper .artwork-img {
+  width: 777px;
+  height: 443px;
+}
+
+.artwork-info.caravaggio-supper {
+  left: 657px;
+  top: 589px;
+  width: 303px;
+  height: 91px;
+}
+
+/* Leonardo da Vinci - Ginevra de' Benci */
+.artwork-group.leonardo-ginevra {
+  left: 552px;
+  top: 1390px;
+  width: 475px;
+}
+
+.artwork-group.leonardo-ginevra .artwork-img {
+  width: 475px;
+  height: 351px;
+}
+
+.artwork-info.leonardo-ginevra {
+  left: 552px;
+  top: 1752px;
+  width: 475px;
+  height: 75px;
+}
+
+/* Pieter Bruegel the Elder */
+.artwork-group.pieter {
+  left: 1083px;
+  top: 1422px;
+  width: 294px;
+}
+
+.artwork-group.pieter .artwork-img {
+  width: 294px;
+  height: 380px;
+}
+
+.artwork-info.pieter {
+  left: 1083px;
+  top: 1812px;
+  width: 293px;
+  height: 88px;
+}
+
+/* Raphael */
+.artwork-group.raphael-renaissance {
+  left: 118px;
+  top: 759px;
+  width: 395px;
+}
+
+.artwork-group.raphael-renaissance .artwork-img {
+  width: 395px;
+  height: 393px;
+}
+
+.artwork-info.raphael-renaissance {
+  left: 118px;
+  top: 1166px;
+  width: 396px;
+  height: 83px;
+}
+
+/* Caravaggio - Cupid as Victor */
+.artwork-group.caravaggio-cupid {
+  left: 546px;
+  top: 700px;
+  width: 481px;
+}
+
+.artwork-group.caravaggio-cupid .artwork-img {
+  width: 481px;
+  height: 564px;
+}
+
+.artwork-info.caravaggio-cupid {
+  left: 546px;
+  top: 1284px;
+  width: 480px;
+  height: 87px;
+}
+
+/* EXTRACTED PHOTOGRAPHY STYLES */
+/* Lena Koval */
+.artwork-group.lena {
+  left: 31px;
+  top: 166px;
+  width: 305px;
+}
+
+.artwork-group.lena .artwork-img {
+  width: 305px;
+  height: 366px;
+  border-radius: 0.77px;
+}
+
+.artwork-info.lena {
+  left: 31px;
+  top: 537px;
+  width: 305px;
+  height: 57px;
+}
+
+/* Miles Grantt */
+.artwork-group.miles {
+  left: 362px;
+  top: 350px;
+  width: 618px;
+}
+
+.artwork-group.miles .artwork-img {
+  width: 618px;
+  height: 506px;
+  border-radius: 1.56px;
+}
+
+.artwork-info.miles {
+  left: 363px;
+  top: 868px;
+  width: 618px;
+  height: 54px;
+}
+
+/* Emilie Möri */
+.artwork-group.emilie {
+  left: 1011px;
+  top: 152px;
+  width: 287px;
+}
+
+.artwork-group.emilie .artwork-img {
+  width: 287px;
+  height: 287px;
+}
+
+.artwork-info.emilie {
+  left: 1011px;
+  top: 447px;
+  width: 287px;
+  height: 57px;
+}
+
+/* Igor Vitomirov */
+.artwork-group.igor {
+  left: 69px;
+  top: 622px;
+  width: 247px;
+}
+
+.artwork-group.igor .artwork-img {
+  width: 247px;
+  height: 329px;
+}
+
+.artwork-info.igor {
+  left: 69px;
+  top: 965px;
+  width: 247px;
+  height: 57px;
+}
+
+/* Kristin Hart */
+.artwork-group.kristin {
+  left: 1026px;
+  top: 551px;
+  width: 301px;
+}
+
+.artwork-group.kristin .artwork-img {
+  width: 301px;
+  height: 199px;
+}
+
+.artwork-info.kristin {
+  left: 1027px;
+  top: 760px;
+  width: 287px;
+  height: 57px;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  height: 101px;
+  background-color: #443627;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: relative;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-logo {
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease-out 0.2s;
+}
+
+.footer.visible .footer-logo {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-copyright {
+  color: white;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.5s ease-out 0.3s;
+}
+
+.footer.visible .footer-copyright {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInItem {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.005);
+  }
+}
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 70px;
+    overflow: visible;
+    transform: translateX(-100%);
+    animation: slideInLeft 0.6s ease-out 0.2s forwards;
+  }
+
+  .sidebar.loaded {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+
+  .nav-text {
+    display: none;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 12px 8px;
+  }
+
+  .nav-icon {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .hero-title {
+    font-size: 60px;
+  }
+
+  .painters-title {
+    font-size: 80px;
+  }
+
+  .hero-description {
+    width: 90%;
+  }
+
+  .painter-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 20px auto;
+    width: 80%;
+  }
+
+  .artwork-img,
+  .artwork-info {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 20px 0;
+  }
+
+  .contemporary-art,
+  .modern-art,
+  .renaissance-art,
+  .photography {
+    min-height: auto;
+  }
+
+  .painters-container,
+  .art-section-container {
+    width: 95%;
+    height: auto;
+  }
+}
+
+/* Mobile Styles (max-width: 768px) */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .sidebar {
+    width: 250px;
+    transform: translateX(-100%);
+    animation: none;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar.loaded {
+    transform: translateX(-100%);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 63px 15px 0 15px;
+  }
+
+  .hero-section {
+    padding: 10px 0 20px 0;
+    margin-bottom: 30px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+    line-height: 1.1;
+  }
+
+  .painters-title,
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+    line-height: 1.2;
+  }
+
+  .section {
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .section-divider {
+    width: 95%;
+    margin: 30px 0;
+    height: 1px;
+  }
+
+  /* Mobile Carousel Styles */
+  .painters-container,
+  .art-section-container {
+    display: none;
+  }
+
+  /* Show carousel containers */
+  .painters-carousel-container,
+  .art-carousel-container {
+    display: block !important;
+    margin-bottom: 30px;
+  }
+
+  /* Polaroid style for carousel */
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 15px auto;
+  }
+
+  .carousel-slide {
+    display: none;
+    background: white;
+    padding: 12px 12px 45px 12px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+  }
+
+  .carousel-slide.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .carousel-slide.polaroid {
+    padding-bottom: 60px;
+  }
+
+  .carousel-slide .artwork-img {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 0 0 12px 0 !important;
+    display: block;
+  }
+
+  .carousel-slide .artwork-info {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 13px;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .carousel-slide .painter-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0;
+    width: 100% !important;
+    display: block;
+  }
+
+  .carousel-slide .painter-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .carousel-slide .painter-name {
+    font-size: 16px;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .carousel-slide .painter-bio {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .carousel-slide .painter-name,
+  .carousel-slide .painter-bio {
+    opacity: 1 !important;
+    transform: none !important;
+    text-align: center;
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  /* Carousel controls */
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #443627;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .carousel-btn:hover {
+    background-color: #5a4a35;
+    transform: scale(1.1);
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background-color: #443627;
+    transform: scale(1.2);
+  }
+
+  /* Art sections */
+  .contemporary-art,
+  .modern-art,
+  .renaissance-art,
+  .photography {
+    min-height: auto !important;
+    padding: 25px 0 15px 0 !important;
+    height: auto !important;
+    margin-bottom: 40px;
+  }
+
+  .hero-description {
+    width: 100% !important;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 15px 10px;
+    text-align: center;
+    gap: 10px;
+    margin-top: 30px;
+    width: 420px;
+  }
+
+  .footer-logo {
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+  }
+
+  .hero-image {
+    margin-bottom: 20px;
+    max-height: 300px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .painters-section {
+    padding: 30px 0 20px 0 !important;
+    min-height: auto !important;
+  }
+
+  .painters-carousel-container,
+  .art-carousel-container {
+    padding: 0 !important;
+    margin: 0 auto 25px auto !important;
+  }
+
+  .section-title {
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Desktop styles - hide carousel containers */
+@media (min-width: 1025px) {
+  .painters-carousel-container,
+  .art-carousel-container {
+    display: none !important;
+  }
+
+  .painters-container,
+  .art-section-container {
+    display: block !important;
+  }
+}
+
+/* Dark overlay for mobile menu */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== IMAGE MODAL/POPUP STYLES ===== */
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: modalZoomIn 0.3s ease;
+}
+
+@keyframes modalZoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-caption {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  margin-top: 10px;
+  
+}
+
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #443627;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.modal-close:hover {
+  background: #5a4a35;
+  transform: scale(1.1);
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(68, 54, 39, 0.8);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.modal-nav:hover {
+  background: rgba(90, 74, 53, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modal-prev {
+  left: 20px;
+}
+
+.modal-next {
+  right: 20px;
+}
+
+/* Touch/swipe indicators */
+.modal-swipe-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Zoom functionality for modal image */
+.modal-zoom-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10000;
+}
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(68, 54, 39);
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+  background: rgb(90, 74, 53);
+  transform: scale(1.1);
+}
+
+/* Loading animation for modal */
+.modal-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  background: rgb(0, 0, 0);
+  padding: 20px 30px;
+  border-radius: 8px;
+}
+
+.modal-loading::after {
+  content: "...";
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+/* For carousel images */
+.carousel-slide img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.02);
+}
+
+/* For desktop - disable modal on desktop if you want */
+@media (min-width: 1025px) {
+  .image-modal {
+    display: none !important;
+  }
+  
+  .painter-card img,
+  .artwork-img {
+    cursor: default;
+  }
+}
+
+/* Mobile-specific modal adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 85%;
+  }
+  
+  .modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  
+  .modal-close {
+    top: -35px;
+    right: -10px;
+  }
+  
+  .modal-caption {
+    font-size: 12px;
+    bottom: -100px;
+  }
+
+  .zoom-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .modal-prev {
+    left: 10px;
+    margin-bottom: -100px;
+
+  }
+  
+  .modal-next {
+    right: 10px;
+    margin-bottom: -100px;
+
+  }
+  
+  .zoom-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    margin-bottom: -100px;
+
+  }
+  
+  .modal-swipe-indicator {
+    font-size: 10px;
+    padding: 6px 12px;
+    bottom: 15px;
+    margin-bottom: -50px;
+  }
+}
+
+/* Remove extra spacing from various elements */
+body {
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 0.8em;
+}
+
+/* Ensure images don't create extra space */
+img {
+  vertical-align: middle;
+}
+
+/* Compact form for all carousel slides */
+.carousel-slide * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.carousel-slide * + * {
+  margin-top: 8px;
+}
+
+/* Additional animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Audio Controls */
+.audio-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out 2s forwards;
+}
+
+.audio-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #443627;
+  border: 2px solid #fffbf0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.audio-btn:hover {
+  background: #5a4a35;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.audio-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-icon, .muted-icon {
+  width: 24px;
+  height: 24px;
+  fill: #fffbf0;
+}
+
+.audio-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: #443627;
+  color: #fffbf0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.audio-btn:hover .audio-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.volume-slider-container {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.audio-controls:hover .volume-slider-container {
+  width: 100px;
+  opacity: 1;
+}
+
+.volume-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #443627;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffbf0;
+  border: 2px solid #443627;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 251, 240, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffbf0;
+  border: 2px solid #443627;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 251, 240, 0.3);
+}
+
+/* Responsive audio controls */
+@media (max-width: 768px) {
+  .audio-controls {
+    bottom: 15px;
+    right: 20px;
+  }
+  
+  .audio-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .audio-icon, .muted-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .audio-tooltip {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .audio-controls:hover .volume-slider-container {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-controls {
+    bottom: 10px;
+    right: 20px;
+  }
+  
+  .audio-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* Add after existing styles */
+
+/* Improved typography scale */
+.hero-title {
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+
+.painters-title {
+  letter-spacing: -0.015em;
+}
+
+/* Add decorative elements */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin: 15px auto 30px;
+  border-radius: 2px;
+}
+
+/* Better spacing */
+.section {
+  padding: 80px 40px;
+}
+
+.section-divider {
+  background: linear-gradient(90deg, transparent, #443627, transparent);
+  height: 2px;
+  width: 70%;
+}
+
+
+        .hero-title {
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
+                       subtlePulse 4s 2s infinite ease-in-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Enhanced card hover effects */
+.painter-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.painter-card:hover {
+  transform: translateY(-15px) scale(1.02);
+}
+
+.painter-card img {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.painter-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Gradient overlay on images */
+.painter-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.painter-card:hover::after {
+  opacity: 1;
+}
+
+/* Improved sidebar design */
+.sidebar {
+  background: linear-gradient(180deg, #fff3e5 0%, #f8e9d8 100%);
+  border-right: 2px solid rgba(68, 54, 39, 0.1);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(180deg, #8B7355, #443627);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover::before,
+.nav-item.active::before {
+  transform: translateX(0);
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(68, 54, 39, 0.08), rgba(68, 54, 39, 0.15));
+  border-left: 3px solid #443627;
+}
+
+/* Add subtle gradients */
+.hero-section {
+  background: linear-gradient(135deg, #fffbf0 0%, #fcf5e3 100%);
+}
+
+.footer {
+  background: linear-gradient(180deg, #443627 0%, #2a1f15 100%);
+  border-top: 3px solid #8B7355;
+}
+
+/* Add accent colors */
+.accent-line {
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+  width: 200px;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+/* Subtle texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23443627' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Improved hero section */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  filter: saturate(1.1) contrast(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  border: 15px solid white;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(255, 251, 240, 0.9));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-description {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+
+
+/* Add to existing animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(0.5deg); }
+  66% { transform: translateY(5px) rotate(-0.5deg); }
+}
+
+.artwork-img {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* Staggered animations for sections */
+.section:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+/* Parallax effect */
+.hero-image {
+  will-change: transform;
+}
+
+}
+/* Loading animation */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fffbf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.loading-dots div {
+  width: 12px;
+  height: 12px;
+  background: #443627;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots div:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots div:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  /* Better mobile spacing */
+  .section {
+    padding: 40px 20px;
+  }
+  
+  /* Mobile-specific animations */
+  .hero-title {
+    font-size: 42px;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Touch-friendly buttons */
+  .nav-item {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+  }
+  
+  /* Better mobile carousel */
+  .carousel-slide {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+}
+

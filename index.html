@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>The Gallery</title>
+    <meta
+      name="description"
+      content="A case study exploring contemporary digital art exhibition design."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="landingpage.css" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-transition" id="pageTransition">
+        <div class="gallery-preview" id="galleryPreview"></div>
+      </div>
+      <div
+        class="button-animation-container"
+        id="buttonAnimationContainer"
+      ></div>
+      <section class="hero">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <div class="hero-content">
+          <h1 class="hero-title">THE GALLERY</h1>
+          <p class="hero-subtitle">a space where art meets emotion</p>
+          <button class="cta-button" id="enterButton">
+            <span class="button-text">enter gallery</span>
+            <span class="button-icon"><i class="fas fa-arrow-right"></i></span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const button = document.getElementById("enterButton");
+        const buttonAnimationContainer = document.getElementById(
+          "buttonAnimationContainer"
+        );
+        const pageTransition = document.getElementById("pageTransition");
+        const galleryPreview = document.getElementById("galleryPreview");
+
+        // Typing effect
+        const subtitle = document.querySelector(".hero-subtitle");
+        const originalText = subtitle.textContent;
+        subtitle.textContent = "";
+
+        let i = 0;
+        const typeWriter = () => {
+          if (i < originalText.length) {
+            subtitle.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 30);
+          }
+        };
+
+        setTimeout(typeWriter, 1000);
+
+        // Button click animation - YOUR ORIGINAL TIMING
+        button.addEventListener("click", function () {
+          if (
+            this.classList.contains("loading") ||
+            this.classList.contains("success")
+          ) {
+            return;
+          }
+
+          // Particle explosion
+          createParticleExplosion(this);
+
+          setTimeout(() => {
+            this.classList.add("loading");
+          }, 200);
+
+          setTimeout(() => {
+            this.classList.remove("loading");
+            this.classList.add("success");
+          }, 1500);
+
+          // YOUR ORIGINAL TIMING with mobile optimization
+          const isMobile = window.innerWidth <= 767;
+
+          // Faster transitions on mobile
+          const transitionDelay = isMobile ? 1800 : 2200;
+          const previewShowDelay = isMobile ? 100 : 100;
+          const previewTime = isMobile ? 3500 : 6000;
+
+          setTimeout(() => {
+            pageTransition.style.display = "flex";
+
+            setTimeout(() => {
+              pageTransition.classList.add("active");
+
+              setTimeout(() => {
+                showGalleryPreview();
+
+                setTimeout(() => {
+                  pageTransition.style.transition = "opacity 0.8s ease";
+                  pageTransition.style.opacity = "0";
+
+                  setTimeout(() => {
+                    window.location.href = "homepage.html";
+                  }, 800);
+                }, previewTime);
+              }, previewShowDelay);
+            }, 10);
+          }, transitionDelay);
+        });
+
+        function createParticleExplosion(element) {
+          const rect = element.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          // Fewer particles on mobile for performance - YOUR ORIGINAL SETTINGS
+          const isMobile = window.innerWidth <= 767;
+          const particleCount = isMobile ? 8 : 12;
+
+          for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+
+            const size =
+              Math.random() * (isMobile ? 4 : 6) + (isMobile ? 3 : 4);
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            const colorVariant = Math.floor(Math.random() * 30);
+            particle.style.backgroundColor = `rgba(${68 + colorVariant}, ${
+              54 + colorVariant
+            }, ${39 + colorVariant}, 0.7)`;
+
+            const angle = i * (360 / particleCount) + Math.random() * 15;
+            const distance = isMobile
+              ? 40
+              : 60 + Math.random() * (isMobile ? 20 : 40);
+            const tx = Math.cos((angle * Math.PI) / 180) * distance;
+            const ty = Math.sin((angle * Math.PI) / 180) * distance;
+
+            particle.style.left = `${centerX}px`;
+            particle.style.top = `${centerY}px`;
+
+            particle.style.setProperty("--tx", `${tx}px`);
+            particle.style.setProperty("--ty", `${ty}px`);
+
+            buttonAnimationContainer.appendChild(particle);
+            particle.style.animation = `particleExplode ${
+              isMobile ? "0.6s" : "0.8s"
+            } ease-out forwards`;
+
+            setTimeout(
+              () => {
+                if (particle.parentNode) {
+                  particle.parentNode.removeChild(particle);
+                }
+              },
+              isMobile ? 600 : 800
+            );
+          }
+        }
+
+        function showGalleryPreview() {
+          galleryPreview.innerHTML = `
+            <div class="preview-content">
+              <div class="preview-title">Welcome to The Gallery</div>
+              <div class="preview-subtitle">Loading your artistic journey...</div>
+              <div class="art-preview">
+                <div class="art-frame"></div>
+                <div class="art-frame"></div>
+                <div class="art-frame"></div>
+              </div>
+              <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+          `;
+
+          setTimeout(() => {
+            galleryPreview.classList.add("show");
+          }, 100);
+        }
+      });
+    </script>
+  </body>
+</html>
